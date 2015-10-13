@@ -1,0 +1,161 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Aero Plane Game</title>
+<style>
+
+@keyframes Background {
+	from 
+	{ 
+		background-position: 0 0; 
+	}
+	to 
+	{ 
+		background-position: 100% 0;
+	}
+}
+@-webkit-keyframes obs {
+0%{
+position:absolute;
+right:20%;
+}
+20%{
+position:absolute;
+right:40%;
+}
+40%{
+position:absolute;
+right:60%;
+}
+60%{
+position:absolute;
+right:80%;
+}
+100%{
+position:absolute;
+right:100%;
+}
+}
+#background{ 
+
+	width: 100%; 
+	height: 100%; 
+	background-image: url("sky.jpg");
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+transform: x;
+	animation: Background 2s linear infinite normal;
+}
+#bg {
+position:absolute;
+top:250px;
+left:100px;
+z-index:1;
+width: 40%;
+Height: 40%;
+background-repeat: no-repeat;
+background-image: url("falcon.png");
+}
+#stone {
+top:50px;
+animation: obs 2s linear infinite normal;
+}
+#stone1 {
+position:relative;
+top:250px;
+animation: obs 4s linear infinite normal;
+}
+#stone2 {
+position:relative;
+top:500px;
+animation: obs 3s linear infinite normal;
+}
+
+#buttonup {
+position:absolute;
+top:580px; left:600px;
+}
+#buttonmedium {
+position:absolute;
+top:580px; left:650px;
+}
+#buttondown {
+position:absolute;
+top:580px; left:700px;
+}
+body{
+	padding:0;
+	margin:0;
+}
+
+
+
+
+</style>
+</head>
+<body>
+<script>
+
+
+
+function up() { 
+	document.getElementById('bg').style.top = '50px' ;
+	document.getElementById('bg').style.left = '100px' ;	
+}
+function down() { 
+	document.getElementById('bg').style.top = '500px' ;
+	document.getElementById('bg').style.left = '100px' ;	
+}
+
+function medium() { 
+	document.getElementById('bg').style.top = '250px' ;
+	document.getElementById('bg').style.left = '100px' ;	
+}
+
+var vari=setInterval(function(){
+		             var stone = document.getElementById("stone1");
+                     var plane = document.getElementById("bg");
+					 
+					 var stone_box = { top: 0 ,bottom:0, left:0, right:0 };
+					 var plane_box = { top: 0 , bottom:0, left:0, right:0 };
+					 
+                     stone_box = stone.getBoundingClientRect();
+					 plane_box = plane.getBoundingClientRect();
+					 
+					 if (stone_box.top > plane_box.top && stone_box.bottom < plane_box.bottom && stone_box.left < plane_box.right && stone_box.left > plane_box.left){
+					 alert("Game Over");
+					 }
+					 
+			},33);
+
+var vari=setInterval(function(){
+		             var stone = document.getElementById("stone");
+                     var plane = document.getElementById("bg");
+					 
+					 var stone_box = { top: 0 ,bottom:0, left:0, right:0 };
+					 var plane_box = { top: 0 , bottom:0, left:0, right:0 };
+					 
+                     stone_box = stone.getBoundingClientRect();
+					 plane_box = plane.getBoundingClientRect();
+					 
+					 if (stone_box.top > plane_box.top && stone_box.bottom < plane_box.bottom && stone_box.left < plane_box.right && stone_box.left > plane_box.left){
+					 alert("Game Over");
+					 }
+					 
+			},33);
+
+</script>
+
+<div id="background">
+
+<div id="stone"> <img src="stone.png"></div>
+<div id="stone1"> <img src="stone1.png"></div>
+<div id="stone2"> <img src="stone2.png"></div>
+<div id="bg"></div>
+<button id="buttonup" type="button" onclick="up()">UP</button>
+<button id="buttonmedium" type="button" onclick="medium()">MID</button>
+<button id="buttondown" type="button" onclick="down()">DOWN</button>
+
+</div>
+</body>
+</html>
